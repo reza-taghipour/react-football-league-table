@@ -1,7 +1,7 @@
 //گرفتن نام تیم ها
 
 import React, { useState } from 'react'
-import { Matches } from './matches'
+import { CreatInputs } from './matches'
 
 export function TeamsInput() {
     const [visible, seVisible] = useState(false)
@@ -70,7 +70,7 @@ export function TeamsInput() {
                 </form>
             }
 
-            {showMatch && <Matches teamCount={teamCount} />}
+            {showMatch && <CreatInputs teamCount={teamCount} />}
         </>
 
     )
