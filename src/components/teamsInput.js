@@ -8,10 +8,12 @@ export function TeamsInput() {
     const [leagueName, setLeagueName] = useState("")
     const [teamCount, setTeamCount] = useState(0)
     const [showMatch, setShowMatch] = useState(false)
+    const [showInput, setShowInput] = useState(false)
 
     const handleClike = (event) => {
         event.preventDefault();
         seVisible(true)
+        setShowInput(true)
     }
 
     const handleSubmit = (event) => {
@@ -41,20 +43,20 @@ export function TeamsInput() {
                 </ul>}
             </div>
 
-            {visible &&
+            {visible && showInput &&
                 <form
                     onSubmit={handleSubmit}
                     className="bg-gray-700 shadow-md rounded px-8 pt-6 pb-8 mb-4"
                     id="addNewLeagueInputs">
                     <div className=" text-base inputs-div">
-                        <label className="block text-sm font-bold mb-2" for="leagueName">نام لیگ :</label>
+                        <label className="block text-sm font-bold mb-2" htmlFor="leagueName">نام لیگ :</label>
                         <input className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             type="text"
                             required
                             onChange={(e) => setLeagueName(e.target.value)}
                             name="leagueName"
                             id="leagueName" />
-                        <label className="block text-sm font-bold mb-2" for="teamCount">تعداد تیم های شرکت کننده :</label>
+                        <label className="block text-sm font-bold mb-2" htmlFor="teamCount">تعداد تیم های شرکت کننده :</label>
                         <input
                             className="shadow appearance-none border rounded py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline"
                             type="number"
@@ -70,7 +72,7 @@ export function TeamsInput() {
                 </form>
             }
 
-            {showMatch && <CreatInputs teamCount={teamCount} />}
+            {showMatch && <CreatInputs teamCount={teamCount} showInput={showInput} setShowInput={setShowInput} />}
         </>
 
     )
